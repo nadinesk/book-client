@@ -9,6 +9,7 @@ export default (props) => {
         <div className="navbar">
             <Link to="/">Home</Link>
             <Link to="/books">Books</Link>
+            <Link to="/about">About</Link>
           
         </div>
     )
