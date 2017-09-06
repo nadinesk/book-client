@@ -1,4 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/bookActions.js'
+
 
 export default class AddBook extends Component {
 
@@ -39,59 +43,79 @@ export default class AddBook extends Component {
             })
     }
 
+      handleOnSubmit(event){
+            event.preventDefault()
+            
+            let book = Object.assign({}, this.state)
+            this.props.addBook(book)
+  }
+
     render() {
 
         
 
         return (
-            <form>
+                 <form onSubmit={this.handleOnSubmit.bind(this)}>
 
-                <div className="input-group">
-                    <input
-                        className="add-book-field"
-                        type="text"
-                        name="title"
-                        onChange={(event) => this.handleInputChange(event)}
-                        placeholder="Title" />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="add-book-field"
-                        type="number"
-                        name="rating"
-                        onChange={(event) => this.handleInputChange(event)}
-                        placeholder="Rating" />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="add-book-field"
-                        type="text"
-                        name="author"
-                        onChange={(event) => this.handleInputChange(event)}
-                        placeholder="Author" />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="add-book-field"
-                        type="text"
-                        name="notes"
-                        onChange={(event) => this.handleInputChange(event)}
-                        placeholder="Notes" />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="add-book-button"
-                        type="submit"
-                        value="Create Book"
-                        onClick={(event) => this.handleOnClick(event)} />
-                </div>
+              <div>
+        <input type="text"
+              name="title"
+              onChange={(event) => this.handleInputChange(event)}
+              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              placeholder="Title"/>
 
 
-            </form>
+      </div>
+
+      <div>
+        <input type="text"
+              name="author"
+              onChange={(event) => this.handleInputChange(event)}
+              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              placeholder="Author"/>
+
+
+      </div>
+
+      <div>
+        <input type="number"
+              name="rating"
+              onChange={(event) => this.handleInputChange(event)}
+              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              placeholder="Rating"/>
+
+
+      </div>
+      <div>
+        <input type="text"
+              name="notes"
+              onChange={(event) => this.handleInputChange(event)}
+              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              placeholder="Notes"/>
+
+
+      </div>
+      <div>
+        <input type="submit" />
+      </div>
+      </form>
         )
     }
 }
+
+export const ConnectedBooksInput = connect(mapStateToProps, mapDispatchToProps)(AddBook)
+
+function mapDispatchToProps(dispatch){
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+function mapStateToProps(state){
+  return { books: state.books}
+}
+
+
+
+
+
+
+
