@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class AddSurfboard extends Component {
+export default class AddBook extends Component {
 
     constructor(props) {
 
@@ -34,14 +34,14 @@ export default class AddSurfboard extends Component {
         })
             .then(response => response.json())
             .then(data => {
-                this.props.fetchBooks()
+                //this.props.fetchBooks()
                 this.props.router.push('/books')
             })
     }
 
     render() {
 
-        console.log(this.state)
+        
 
         return (
             <form>

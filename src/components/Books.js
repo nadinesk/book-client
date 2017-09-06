@@ -14,25 +14,29 @@ export default class Books extends Component {
             books: [],
             currentBook: null,
             title: '',
-            author: ''
-        }
+            author: '', 
+            rating: 0, 
+            notes: ''
 
-        // this.fetchSurfboards = this.fetchSurfboards.bind(this)
+        }
     }
 
     componentDidMount() {
 
         this.fetchBooks()
+
     }
 
     fetchBooks() {
 
-        fetch('http://localhost:3200/api/v1/books')
+        fetch('http://localhost:3200/api/v1/books')        	
+            .then(console.log(response => response.json()))
             .then(response => response.json())
-            .then(data => this.setState({
+            .then(data => this.setState({            	
                 books: data,
                 currentBook: data[0]
             }))
+
     }
 
     setBook(id) {
@@ -49,6 +53,8 @@ export default class Books extends Component {
         //     currentSurfboard: this.state.currentSurfboard,
         // }))
 
+
+		
         const books = this.state.books.map((book) => (
 
             <div key={book.id}>
@@ -61,7 +67,7 @@ export default class Books extends Component {
         return (
             <div id="main-container" className="books">
                 <div id="books-container">
-              {/*<Link to="/books/new">Add A Book</Link>*/}
+              {<Link to="/books/new">Add A Book</Link>}
                     {books}
                 </div>
                 <div id="book-main-container">
