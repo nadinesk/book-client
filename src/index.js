@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware, compose } from 'redux'
-import { Router, browserHistory } from 'react-router'
+import { Router, browserHistory, Route } from 'react-router'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import Routes from './Routes.js'
 import { WrapperApp } from './App'
+import Books from './components/Books'
+import Home from './components/Home'
+import AddBook from './components/AddBook'
+import About from './components/About'
+
 
 import './index.css';
 
@@ -21,7 +26,11 @@ const store = createStore(
 ReactDOM.render(
   
   <Provider store={store}>   
-    <WrapperApp />
+    <div> 
+    	<Router history={browserHistory} routes={Routes} />    		
+    </div> 
+    
+    
   </Provider>,
 
   document.getElementById('root')

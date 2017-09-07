@@ -3,17 +3,17 @@ import { Route, IndexRoute } from 'react-router'
 import { WrapperApp } from './App'
 import Books from './components/Books'
 import About from './components/About'
-import AddBook from './components/AddBook'
+import { ConnectedBooksInput } from './components/AddBook'
+import Navbar from './components/Navigation/Navbar';
 
 // import SurfboardDetail from './components/SurfboardDetail'
 
 import Home from './components/Home'
 
 export default (
-    <Route>
-        	<Route path="/" component={Home} />
+     <Route path="/" component={ WrapperApp }>        
             <Route path="/books" component={Books} />
-            <Route path="/books/new" component={AddBook} />
-			<Route path="/about" component={About} />
+            <Route path="/books/new" component={ConnectedBooksInput} />
+			<Route path="/about" component={About} />			
     </Route>
 )

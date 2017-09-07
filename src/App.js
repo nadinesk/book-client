@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navigation/Navbar';
 import Books from './components/Books'
+import Home from './components/Home'
 import AddBook from './components/AddBook'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from './actions/bookActions.js'
 import { Router, browserHistory } from 'react-router'
 import Routes from './Routes.js'
+import { Link } from 'react-router'
 
 import './App.css';
 
@@ -26,12 +28,9 @@ export class App extends Component {
  render() {
     return (
       <div className="App">
-      <Router history={browserHistory} routes={Routes} />,
-        <Navbar />
-          {this.props.children}
-             <AddBook addBook={this.props.actions.addBook} />
-        
-		
+      	<Navbar />
+      	<Home/>
+      	{this.props.children}
       </div>
 
     );

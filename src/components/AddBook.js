@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/bookActions.js'
+import { addBook } from '../actions/bookActions.js'
 
 
 export default class AddBook extends Component {
@@ -47,7 +48,7 @@ export default class AddBook extends Component {
             event.preventDefault()
             
             let book = Object.assign({}, this.state)
-            this.props.addBook(book)
+            this.props.actions.addBook(book)
   }
 
     render() {
@@ -103,7 +104,7 @@ export default class AddBook extends Component {
     }
 }
 
-export const ConnectedBooksInput = connect(mapStateToProps, mapDispatchToProps)(AddBook)
+
 
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
@@ -112,6 +113,8 @@ function mapDispatchToProps(dispatch){
 function mapStateToProps(state){
   return { books: state.books}
 }
+
+export const ConnectedBooksInput = connect(mapStateToProps, mapDispatchToProps)(AddBook)
 
 
 

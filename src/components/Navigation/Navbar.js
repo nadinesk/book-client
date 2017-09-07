@@ -10,7 +10,6 @@ export default (props) => {
             <Link to="/">Home</Link>
             <Link to="/books">Books</Link>
             <Link to="/about">About</Link>
-          
         </div>
     )
 }
