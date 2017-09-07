@@ -25,14 +25,16 @@ export function addBook(book) {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ book: book})
+      body: JSON.stringify({ book: book})      
     })
+
       .then(res => res.json())
-      .then(responseJson => {
-          dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});      
-          browserHistory.push('/books')
+      .then(responseJson => {          
+          dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
+
+          browserHistory.push('/books')          
       })
-     
+
 
   }
 }

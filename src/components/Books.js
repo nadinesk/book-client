@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import BookDetail from './BookDetail'
 
-//import './Books.css'
+import './Books.css'
 
 export default class Books extends Component {
 
@@ -59,7 +59,7 @@ export default class Books extends Component {
 
             <div key={book.id}>
                 <h3 className="book-link" onClick={() => this.setBook(book.id)}>
-                    {book.author}
+                    {book.title}
                 </h3>
             </div>
         ))

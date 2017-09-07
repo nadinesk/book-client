@@ -4,6 +4,7 @@ export default({ book }) => {
 
   return (
     <div>
+      <hr /> 
       <h3>{book.title}</h3>
       <hr />
       <div id="book-details">
