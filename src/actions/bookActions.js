@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch';
+import { browserHistory } from 'react-router';
+
 export function fetchBooks() {
 
   return function(dispatch){
@@ -13,9 +15,9 @@ export function fetchBooks() {
   }
 }
 
-export function addBook(book) {  
-  debugger
-  return function(dispatch) {
+export function addBook(book) {    
+  console.log('addbook')
+  return function(dispatch) {    
     dispatch({type: 'POST_BOOK'})
     return fetch('http://localhost:3200/api/v1/books', {
       method: 'POST',
@@ -27,8 +29,10 @@ export function addBook(book) {
     })
       .then(res => res.json())
       .then(responseJson => {
-          dispatch({type: 'FETCH_BOOKS', payload: responseJson.book})          
+          dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});      
+          browserHistory.push('/books')
       })
+     
 
   }
 }

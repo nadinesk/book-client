@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/bookActions.js'
 import { addBook } from '../actions/bookActions.js'
-
+import Books from '../components/Books'
 
 export default class AddBook extends Component {
 
@@ -26,43 +26,22 @@ export default class AddBook extends Component {
         })
     }
 
-    handleOnClick(event) {
-
-        event.preventDefault()
-
-        fetch('http://localhost:3200/api/v1/books', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ book: this.state })
-        })
-            .then(response => response.json())
-            .then(data => {
-                //this.props.fetchBooks()
-                this.props.router.push('/books')
-            })
-    }
-
       handleOnSubmit(event){
-            event.preventDefault()
-            
+            event.preventDefault()            
             let book = Object.assign({}, this.state)
             this.props.actions.addBook(book)
   }
 
     render() {
 
-        
-
         return (
+                <div>
                  <form onSubmit={this.handleOnSubmit.bind(this)}>
 
               <div>
         <input type="text"
               name="title"
-              onChange={(event) => this.handleInputChange(event)}
-              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              onChange={(event) => this.handleInputChange(event)}              
               placeholder="Title"/>
 
 
@@ -71,8 +50,7 @@ export default class AddBook extends Component {
       <div>
         <input type="text"
               name="author"
-              onChange={(event) => this.handleInputChange(event)}
-              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              onChange={(event) => this.handleInputChange(event)}              
               placeholder="Author"/>
 
 
@@ -81,8 +59,7 @@ export default class AddBook extends Component {
       <div>
         <input type="number"
               name="rating"
-              onChange={(event) => this.handleInputChange(event)}
-              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              onChange={(event) => this.handleInputChange(event)}              
               placeholder="Rating"/>
 
 
@@ -90,8 +67,7 @@ export default class AddBook extends Component {
       <div>
         <input type="text"
               name="notes"
-              onChange={(event) => this.handleInputChange(event)}
-              /*  <input type="text" onChange={this.handleOnRecipeNameChange.bind(this)} placeholder="Recipe name"/> */
+              onChange={(event) => this.handleInputChange(event)}              
               placeholder="Notes"/>
 
 
@@ -100,7 +76,10 @@ export default class AddBook extends Component {
         <input type="submit" />
       </div>
       </form>
-        )
+      
+      </div>
+      )
+
     }
 }
 
