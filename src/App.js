@@ -16,10 +16,11 @@ export class App extends Component {
   
  render() {
     return (
-      <div className="App">      
+      <div>      
       	<Navbar />
       	<Home/>
       	{this.props.children}
+      	
       </div>
 
     );

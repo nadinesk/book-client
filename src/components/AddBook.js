@@ -5,7 +5,7 @@ import * as actions from '../actions/bookActions.js'
 import { addBook } from '../actions/bookActions.js'
 import Books from '../components/Books'
 import { FormErrors } from './FormErrors';
-import {Button, ButtonToolbar} from 'react-bootstrap'
+import { Button, ButtonToolbar, Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 
 export default class AddBook extends Component {
@@ -72,52 +72,45 @@ export default class AddBook extends Component {
     render() {
 
         return (
-                <div>
-                 <form onSubmit={this.handleOnSubmit.bind(this)}>
-                   <FormErrors formErrors={this.state.formErrors} />
+          <div>
 
-              <div>
-        <input type="text"
-              name="title"
-              onChange={(event) => this.handleInputChange(event)}              
-              placeholder="Title"/>
+           <Grid>
+            <Row className="show-grid">
+            <Col md={6} > <h3> Add a Book </h3> </Col> 
+            </Row>                    
+            <Row className="show-grid">
+              <Col md={6} >                    
+              <FormErrors formErrors={this.state.formErrors} />
+                <form onSubmit={this.handleOnSubmit.bind(this)}>
+                  <FormControl 
+                    type="text"
+                    name="title"
+                    onChange={(event) => this.handleInputChange(event)}              
+                    placeholder="Title"/>
+                  
+                <FormControl     
+                  type="text"
+                  name="author"
+                  onChange={(event) => this.handleInputChange(event)}              
+                  placeholder="Author"/>
 
+                <FormControl     
+                  type="number"
+                  name="rating"
+                  onChange={(event) => this.handleInputChange(event)}              
+                  placeholder="Rating"/>
+                <FormControl     
+                  type="text"
+                  name="notes"
+                  onChange={(event) => this.handleInputChange(event)}              
+                  placeholder="Notes"/>
 
-      </div>
-
-      <div>
-        <input type="text"
-              name="author"
-              onChange={(event) => this.handleInputChange(event)}              
-              placeholder="Author"/>
-
-
-      </div>
-
-      <div>
-        <input type="number"
-              name="rating"
-              onChange={(event) => this.handleInputChange(event)}              
-              placeholder="Rating"/>
-
-
-      </div>
-      <div>
-        <input type="text"
-              name="notes"
-              onChange={(event) => this.handleInputChange(event)}              
-              placeholder="Notes"/>
-
-
-      </div>
-      <div>
-        <button type="submit" disabled={!this.state.formValid}>Add Book </button>
-      </div>
-
-      
-      </form>
-      
-      </div>
+                <button type="submit" disabled={!this.state.formValid}>Submit </button>
+              </form>      
+              </Col>
+            </Row>
+          </Grid>
+        </div>
       )
 
     }

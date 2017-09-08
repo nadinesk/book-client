@@ -57,23 +57,25 @@ export default class Books extends Component {
 
 		
         const books = this.state.books.map((book) => (
-        <Grid> 
-            <Row className="show-grid">
-                  <Col md={6} mdPush={6}><code>&lt;{book.id} /&gt;</code></Col>
-            
-                <h3 className="book-link" onClick={() => this.setBook(book.id)}>
-                    {book.title}
-                </h3>
-            </div>
+                    
+                        <h3 key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
+                            {book.title}                    
+                        </h3>
+                    
+
         ))
 
         return (
-            <div id="main-container" className="books">
-                <div id="books-container">
-              <button><Link to="/books/new">Add A Book</Link></button>
+            <Grid>
+            <Row className="show-grid">
+                  <Col md={6} > <h3>Al Books </h3> </Col></Row>                                
+                 <Row className="show-grid">
+                  <Col md={6} >                                
+                    <Link to="/books/new">Add A Book</Link>
                     {books}
-                </div>
-                <div id="book-main-container">
+                  </Col> 
+                    
+                <Col md={6}>                                
                     {
                         this.state.currentBook
 
@@ -85,8 +87,9 @@ export default class Books extends Component {
 
                         <h4>...loading</h4>
                     }
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Grid>
         )
     }
 }

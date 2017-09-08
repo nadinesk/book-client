@@ -7,7 +7,7 @@ import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 export default (props) => {
 
     return (
-        <div className="App">
+        
         <Navbar>
     		<Navbar.Header>
       			<Navbar.Brand>
@@ -21,6 +21,6 @@ export default (props) => {
 		      
 		 </Nav>
        </Navbar>
-      </div>
+      
     )
 }

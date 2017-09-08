@@ -26,9 +26,9 @@ const store = createStore(
 ReactDOM.render(
   
   <Provider store={store}>   
-    <div> 
+    
     	<Router history={browserHistory} routes={Routes} />    		
-    </div> 
+    
     
     
   </Provider>,
