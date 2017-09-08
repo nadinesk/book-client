@@ -16,7 +16,17 @@ export default class BooksList extends Component {
         
         
     }
+
+    componentDidMount() {
+    	this.setCurrentBook()
+    }
 	
+
+	setCurrentBook() {
+		this.setState({
+			currentBook: this.props.books[0]
+		})
+	}
  	setBook(id) {
     
         const currentBook = this.props.books.filter(book => book.id === id)[0]
@@ -52,7 +62,7 @@ export default class BooksList extends Component {
 
                         :
 
-                        <h4>...loading</h4>
+                        <h4>click a book to see more details</h4>
                     }
                     </div>
 
