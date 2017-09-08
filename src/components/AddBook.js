@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/bookActions.js'
 import { addBook } from '../actions/bookActions.js'
 import Books from '../components/Books'
+import { FormErrors } from './FormErrors';
+import {Button, ButtonToolbar} from 'react-bootstrap'
 
 
 export default class AddBook extends Component {
@@ -12,9 +14,12 @@ export default class AddBook extends Component {
 
         super(props)
 
-        this.state = {
-
-        }
+          this.state = {
+    
+      formErrors: {title: ''},
+      titleValid: false,
+      formValid: false
+    }
 
     }
 
@@ -24,13 +29,44 @@ export default class AddBook extends Component {
 
         this.setState({
             [name]: value,
-        })
+        }, () => { this.validateField(name, value) });
     }
 
       handleOnSubmit(event){
             event.preventDefault()            
             let book = Object.assign({}, this.state)
             this.props.actions.addBook(book)
+
+
+
+  }
+
+
+    validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors;
+    let titleValid = this.state.titleValid;
+    
+
+    switch(fieldName) {
+      case 'title':
+        titleValid = value.length > 0; 
+        fieldValidationErrors.title = titleValid ? '' : ' must include a book title';
+        break;      
+      default:
+        break;
+    }
+    this.setState({formErrors: fieldValidationErrors,
+                    titleValid: titleValid,
+                    
+                  }, this.validateForm);
+  }
+
+  validateForm() {
+    this.setState({formValid: this.state.titleValid});
+  }
+
+  errorClass(error) {
+    return(error.length === 0 ? '' : 'has-error');
   }
 
     render() {
@@ -38,6 +74,7 @@ export default class AddBook extends Component {
         return (
                 <div>
                  <form onSubmit={this.handleOnSubmit.bind(this)}>
+                   <FormErrors formErrors={this.state.formErrors} />
 
               <div>
         <input type="text"
@@ -74,8 +111,10 @@ export default class AddBook extends Component {
 
       </div>
       <div>
-        <input type="submit" />
+        <button type="submit" disabled={!this.state.formValid}>Add Book </button>
       </div>
+
+      
       </form>
       
       </div>

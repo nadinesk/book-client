@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import BookDetail from './BookDetail'
+import { Button, ButtonToolbar, Grid, Row, Col, Clearfix } from 'react-bootstrap'
 
 import './Books.css'
 
@@ -56,8 +57,10 @@ export default class Books extends Component {
 
 		
         const books = this.state.books.map((book) => (
-
-            <div key={book.id}>
+        <Grid> 
+            <Row className="show-grid">
+                  <Col md={6} mdPush={6}><code>&lt;{book.id} /&gt;</code></Col>
+            
                 <h3 className="book-link" onClick={() => this.setBook(book.id)}>
                     {book.title}
                 </h3>
@@ -67,7 +70,7 @@ export default class Books extends Component {
         return (
             <div id="main-container" className="books">
                 <div id="books-container">
-              {<Link to="/books/new">Add A Book</Link>}
+              <button><Link to="/books/new">Add A Book</Link></button>
                     {books}
                 </div>
                 <div id="book-main-container">

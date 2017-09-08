@@ -11,9 +11,9 @@ import Books from './components/Books'
 import Home from './components/Home'
 import AddBook from './components/AddBook'
 import About from './components/About'
+import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 
 
-import './index.css';
 
 const store = createStore(
   rootReducer,

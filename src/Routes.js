@@ -4,7 +4,8 @@ import { WrapperApp } from './App'
 import Books from './components/Books'
 import About from './components/About'
 import { ConnectedBooksInput } from './components/AddBook'
-import Navbar from './components/Navigation/Navbar';
+
+import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 
 // import SurfboardDetail from './components/SurfboardDetail'
 

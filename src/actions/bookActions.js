@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+
 import { browserHistory } from 'react-router';
 
 export function fetchBooks() {
@@ -27,13 +28,12 @@ export function addBook(book) {
       },
       body: JSON.stringify({ book: book})      
     })
-
       .then(res => res.json())
       .then(responseJson => {          
           dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
-
           browserHistory.push('/books')          
       })
+
 
 
   }

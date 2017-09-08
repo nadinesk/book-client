@@ -10,24 +10,13 @@ import { Router, browserHistory } from 'react-router'
 import Routes from './Routes.js'
 import { Link } from 'react-router'
 
-import './App.css';
+
 
 export class App extends Component {
-  componentDidMount() {
-    
-      
-    if (this.props.books.books.length === 0) {
-      console.log('in component did mount')
-      
-      this.props.actions.fetchBooks()
-
-
-    }
-  }
-
+  
  render() {
     return (
-      <div className="App">
+      <div className="App">      
       	<Navbar />
       	<Home/>
       	{this.props.children}
