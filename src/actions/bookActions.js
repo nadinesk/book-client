@@ -1,20 +1,34 @@
 import fetch from 'isomorphic-fetch';
+import { stopFetchingData } from './fetchingDataActions';
+
 
 import { browserHistory } from 'react-router';
 
-export function fetchBooks() {
-
-  return function(dispatch){
-    dispatch({type: 'LOADING_BOOKS'})
-    return fetch('http://localhost:3200/api/v1/books')
-      .then(res => {
-        return res.json()
-      }).then(responseJson => {
-        dispatch({type: 'FETCH_BOOKS', payload: responseJson.books})
-    })
-    // return cats;
+const receivedBooksData = booksData => {
+  console.log(booksData)
+  return {
+    type: 'RECEIVED_BOOKS_DATA',
+    booksData
   }
 }
+
+export function fetchBooks() {
+
+  return function(dispatch){    
+    dispatch({type: 'FETCH_BOOKS'})
+    return fetch('http://localhost:3200/api/v1/books')
+      .then(console.log(response => response.json()))
+      .then(res =>  res.json())
+      .then(booksData => {
+        console.log(booksData)
+        dispatch(receivedBooksData(booksData))
+        dispatch(stopFetchingData())
+    })
+   
+  }
+}
+
+
 
 export function addBook(book) {    
   console.log('addbook')
@@ -38,3 +52,12 @@ export function addBook(book) {
 
   }
 }
+
+
+ // fetch('http://localhost:3200/api/v1/books')          
+ //            .then(console.log(response => response.json()))
+ //            .then(response => response.json())
+ //            .then(data => this.setState({             
+ //                books: data,
+ //                currentBook: data[0]
+ //            }))

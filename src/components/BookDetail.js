@@ -8,7 +8,7 @@ export default({ book }) => {
       <h3>{book.title}</h3>
       <hr />
       <div >
-        Author: {book.author} | Rating: ${book.rating} | Notes: {book.notes}
+        Author: {book.author} | Rating: {book.rating} | Notes: {book.notes}
       </div>
     </div>
   )

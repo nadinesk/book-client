@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/bookActions.js'
+
 import { Link } from 'react-router'
 import BookDetail from './BookDetail'
+import BooksList from './BooksList'
 import { Button, ButtonToolbar, Grid, Row, Col, Clearfix } from 'react-bootstrap'
 
 import './Books.css'
@@ -12,19 +17,18 @@ export default class Books extends Component {
         super(props)
 
         this.state = {
-            books: [],
-            currentBook: null,
-            title: '',
-            author: '', 
-            rating: 0, 
-            notes: ''
+          books: []
 
         }
+        
+        
     }
 
     componentDidMount() {
+        debugger
+       this.props.actions.fetchBooks()
 
-        this.fetchBooks()
+       
 
     }
 
@@ -53,29 +57,28 @@ export default class Books extends Component {
         //     fetchSurfboards: this.fetchSurfboards,
         //     currentSurfboard: this.state.currentSurfboard,
         // }))
-
+        
 
 		
-        const books = this.state.books.map((book) => (
-                    
-                        <h3 key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
-                            {book.title}                    
-                        </h3>
-                    
-
-        ))
+        
+                
+              
+                
+        
 
         return (
             <Grid>
             <Row className="show-grid">
-                  <Col md={6} > <h3>Al Books </h3> </Col></Row>                                
+                  <Col className="first_col" md={6} > <h3>All Books </h3> </Col></Row>                                
                  <Row className="show-grid">
-                  <Col md={6} >                                
+                  <Col className="first_col1" md={6} >                                
                     <Link to="/books/new">Add A Book</Link>
-                    {books}
+                    
+                 {this.props.books.length > 0 ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}
+                    
                   </Col> 
                     
-                <Col md={6}>                                
+                <Col className="first_col2" md={6}>                                
                     {
                         this.state.currentBook
 
@@ -93,3 +96,17 @@ export default class Books extends Component {
         )
     }
 }
+
+
+
+function mapDispatchToProps(dispatch){
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+function mapStateToProps(state){
+  debugger
+  return { books: state.books}
+}
+
+export const ConnectedBooks = connect(mapStateToProps, mapDispatchToProps)(Books)
+
