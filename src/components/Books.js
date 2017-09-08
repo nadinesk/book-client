@@ -13,67 +13,32 @@ import './Books.css'
 export default class Books extends Component {
 
     constructor(props) {
-
         super(props)
 
         this.state = {
           books: []
-
         }
-        
-        
     }
 
-    componentDidMount() {
-      
+    componentDidMount() {      
        this.props.actions.fetchBooks()
-
-       
-
-    }
-
-    fetchBooks() {
-
-        fetch('http://localhost:3200/api/v1/books')        	
-            .then(console.log(response => response.json()))
-            .then(response => response.json())
-            .then(data => this.setState({            	
-                books: data,
-                currentBook: data[0]
-            }))
-
-    }
-
-    setBook(id) {
-        const currentBook = this.state.books.filter(book => book.id === id)[0]
-        this.setState({
-            currentBook
-        })
     }
 
     render() {
-
-      
-        return (
-            <Grid>
-            <Row className="show-grid">
-                  <Col className="first_col" md={6} > <h3>All Books </h3> </Col></Row>                                
-                 <Row className="show-grid">
-                  <Col className="first_col1" md={6} >                                
-                    <Link to="/books/new">Add A Book</Link>
-                    
-                 {this.props.books.length > 0 ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}
-                    
-                  </Col> 
-                    
-                
-                </Row>
-            </Grid>
-        )
+      return (
+        <Grid>
+          <Row className="show-grid">
+            <Col className="first_col" md={6} > <h3>All Books </h3> </Col></Row>                                
+          <Row className="show-grid">
+            <Col className="first_col1" md={6} >                                
+              <Link to="/books/new">Add A Book</Link>                    
+                 {this.props.books.length > 0 ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}                    
+            </Col>                     
+          </Row>
+        </Grid>
+      )
     }
 }
-
-
 
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
