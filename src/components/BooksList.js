@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react'
+import BookDetail from './BookDetail'
 
 export default class BooksList extends Component {
 
@@ -17,7 +18,7 @@ export default class BooksList extends Component {
     }
 	
  	setBook(id) {
-        debugger
+    
         const currentBook = this.props.books.filter(book => book.id === id)[0]
         this.setState({
             currentBook
@@ -26,18 +27,37 @@ export default class BooksList extends Component {
     }
 
  render() {
-	debugger
+	
 	const books_map = this.props.books.map((book) => (
                 
                         <p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
-                            {book.title}                    
+                            {book.title}     
+                            {book.id}               
                         </p>
                     
-
+  
                 ))    
-    
+  
   return (
-    <p> {books_map} </p>
+    <div>
+    	{books_map} 
+
+    	<div >                                
+                    {
+                        this.state.currentBook
+
+                        ?
+
+                        <BookDetail book={this.state.currentBook} />
+
+                        :
+
+                        <h4>...loading</h4>
+                    }
+                    </div>
+
+
+    </div>
     )
 	}
 }

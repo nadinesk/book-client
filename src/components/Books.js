@@ -25,7 +25,7 @@ export default class Books extends Component {
     }
 
     componentDidMount() {
-        debugger
+      
        this.props.actions.fetchBooks()
 
        
@@ -53,19 +53,7 @@ export default class Books extends Component {
 
     render() {
 
-        // const childrenWithProps = React.Children.map(this.props.children, (child) => React.cloneElement(child, {
-        //     fetchSurfboards: this.fetchSurfboards,
-        //     currentSurfboard: this.state.currentSurfboard,
-        // }))
-        
-
-		
-        
-                
-              
-                
-        
-
+      
         return (
             <Grid>
             <Row className="show-grid">
@@ -78,19 +66,7 @@ export default class Books extends Component {
                     
                   </Col> 
                     
-                <Col className="first_col2" md={6}>                                
-                    {
-                        this.state.currentBook
-
-                        ?
-
-                        <BookDetail book={this.state.currentBook} />
-
-                        :
-
-                        <h4>...loading</h4>
-                    }
-                    </Col>
+                
                 </Row>
             </Grid>
         )
@@ -104,7 +80,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-  debugger
+
   return { books: state.books}
 }
 
