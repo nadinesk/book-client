@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import BookDetail from './BookDetail'
+import { Button, ButtonToolbar, Grid, Row, Col, Clearfix } from 'react-bootstrap'
 
 export default class BooksList extends Component {
 
@@ -50,9 +51,13 @@ export default class BooksList extends Component {
   
   return (
     <div>
-    	{books_map} 
+    	<Grid> 
+    	 <Row className="show-grid">
+                  <Col className="first_col" md={6} >
+    					{books_map} 
+    			  </Col> 
 
-    	<div >                                
+    	<Col className="first_col" md={6} >
                     {
                         this.state.currentBook
 
@@ -64,8 +69,9 @@ export default class BooksList extends Component {
 
                         <h4>click a book to see more details</h4>
                     }
-                    </div>
-
+        </Col>
+        </Row> 
+       </Grid>
 
     </div>
     )
