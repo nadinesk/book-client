@@ -28,12 +28,14 @@ export default class Books extends Component {
       return (
         <Grid>
           <Row className="show-grid">
-            <Col className="first_col" md={6} > <h3>All Books </h3> </Col></Row>                                
+            <Col className="first_col" md={6} > <h3>All Book Crowd Titles </h3> </Col></Row>     
+            <br />                           
           <Row className="show-grid">
-            <Col className="first_col1" md={6} >                                
-              <Link to="/books/new">Add A Book</Link>                    
-                 {this.props.books.length > 0 ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}                    
-            </Col>                     
+            <Col className="first_col1" md={6} >                               
+              <Link to="/books/new">Add A Book  </Link>                    
+            
+              {this.props.books.length > 0 ? <BooksList books={this.props.books}/> : <h4>...loading</h4>}                    
+            </Col>                                           
           </Row>
         </Grid>
       )

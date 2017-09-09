@@ -42,7 +42,7 @@ export default class FindBook extends Component {
           <div>
            <Grid>
             <Row className="show-grid">
-              <Col md={6} > <h3> Add a Book </h3> </Col> 
+              <Col md={6} > <h3> Find a Book by Title </h3> </Col> 
             </Row>                    
             <Row className="show-grid">
               <Col md={6} >                    

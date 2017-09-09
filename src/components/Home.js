@@ -10,7 +10,7 @@ export default class Home extends Component {
             <Grid>
              	<Row className="show-grid">
             	<Col xs={12} md={12} >
-                	<h1>Welcome to The BookLister</h1>
+                	<h1>The BookCrowd</h1>
                 </Col>
                </Row>
                 

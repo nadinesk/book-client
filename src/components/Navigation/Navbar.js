@@ -14,8 +14,7 @@ export default (props) => {
         			<a href="#">BookCrowd</a>
       		</Navbar.Brand>
     		</Navbar.Header>
-		<Nav bsStyle="pills" >
-		      <NavItem href="/">Home</NavItem>
+		<Nav bsStyle="pills" >		      
 		      <NavItem  href="/books">Books</NavItem>
           <NavItem  href="/books/search">Find Book</NavItem>
           <NavItem  href="/books/new">Add Book</NavItem>
