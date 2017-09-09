@@ -20,7 +20,7 @@ export default (
      <Route path="/" component={ WrapperApp }>        
             <Route path="/books" component={ConnectedBooks} />
             <Route path="/books/new" component={ConnectedBooksInput} />
-            <Route path="/books/find"  component={ConnectedFindBooks} />            
+            <Route path="/books/search"  component={ConnectedFindBooks} />            
 			<Route path="/about" component={About} />		
 			<Route path="/gbooks" component={ConnectedGBooks} />	
     </Route>

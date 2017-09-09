@@ -17,8 +17,9 @@ export default (props) => {
 		<Nav bsStyle="pills" >
 		      <NavItem href="/">Home</NavItem>
 		      <NavItem  href="/books">Books</NavItem>
+          <NavItem  href="/books/search">Find Book</NavItem>
+          <NavItem  href="/books/new">Add Book</NavItem>
 		      <NavItem  href="/about">About</NavItem>
-		      
 		 </Nav>
        </Navbar>
       

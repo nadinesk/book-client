@@ -37,7 +37,7 @@ export default class GBooks extends Component {
             return <GBooksList booksFound={this.props.booksFound}/> 
           }
            else {
-              return <h4>Do a new <a href="/books/find">search</a></h4>
+              return <h4>Do a new <a href="/books/search">search</a></h4>
          }
           
           
