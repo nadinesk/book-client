@@ -18,12 +18,14 @@
 
 
 export default function booksReducer(state = {}, action) {
+  console.log('state', state)
   switch(action.type) {
     case 'RECEIVED_BOOKS_DATA':    
+    console.log('BOOKS action', action.booksData)
       return action.booksData;
-    case 'RECEIVED_GBOOKS_DATA': 
-    	return action.booksFound;
+    
     default: 
       return state;
   }
 }
+

@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch';
 import { stopFetchingData } from './fetchingDataActions';
-
-
 import { browserHistory } from 'react-router';
 
 const receivedBooksData = booksData => {
@@ -13,7 +11,7 @@ const receivedBooksData = booksData => {
 }
 
 const receivedGBooksInfo = booksFound => {
-  console.log(booksFound)
+  debugger
   return {
     type: 'RECEIVED_GBOOKS_DATA',
     booksFound
@@ -63,14 +61,14 @@ export function addBook(book) {
 
 
 export function findBook() {
-
   return function(dispatch){        
-    return fetch('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDUIRRejGqO1hTzX6F7eykfoKO1_InM0Hg')
+    return fetch('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes')
+    .then(console.log('findbookplace'))
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
       .then(booksFound => {
-        console.log(booksFound)
-        dispatch(receivedGBooksInfo(booksFound))
+        console.log('booksFOUNDITEMS', booksFound.items)
+        dispatch(receivedGBooksInfo(booksFound.items))
         dispatch(stopFetchingData())
     })
    

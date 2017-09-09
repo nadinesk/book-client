@@ -12,12 +12,12 @@ export default class FindBook extends Component {
 
     constructor(props) {
         super(props)
-          this.state = {          
-            formErrors: {title: ''},
-            titleValid: false,
-            formValid: false
+         this.state = {
+          booksFound: []
         }
     }
+
+
 
     handleInputChange(event) {
 
@@ -103,7 +103,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-  return { gbooks: state.gbooks}
+  return { booksFound: state.booksFound}
 }
 
 export const ConnectedFindBooks = connect(mapStateToProps, mapDispatchToProps)(FindBook)
