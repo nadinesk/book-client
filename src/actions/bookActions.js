@@ -12,10 +12,18 @@ const receivedBooksData = booksData => {
   }
 }
 
+const receivedGBooksInfo = booksFound => {
+  console.log(booksFound)
+  return {
+    type: 'RECEIVED_GBOOKS_DATA',
+    booksFound
+  }
+}
+
 export function fetchBooks() {
 
   return function(dispatch){    
-    dispatch({type: 'FETCH_BOOKS'})
+    //dispatch({type: 'FETCH_BOOKS'})
     return fetch('https://dry-peak-34989.herokuapp.com/api/v1/books')
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
@@ -44,7 +52,7 @@ export function addBook(book) {
     })
       .then(res => res.json())
       .then(responseJson => {          
-          dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
+          //dispatch({type: 'FETCH_BOOKS', payload: responseJson.book});
           browserHistory.push('/books')          
       })
 
@@ -52,6 +60,23 @@ export function addBook(book) {
 
   }
 }
+
+
+export function findBook() {
+
+  return function(dispatch){        
+    return fetch('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDUIRRejGqO1hTzX6F7eykfoKO1_InM0Hg')
+      .then(console.log(response => response.json()))
+      .then(res =>  res.json())
+      .then(booksFound => {
+        console.log(booksFound)
+        dispatch(receivedGBooksInfo(booksFound))
+        dispatch(stopFetchingData())
+    })
+   
+  }
+}
+
 
 
  // fetch('http://localhost:3200/api/v1/books')          
