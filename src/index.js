@@ -13,8 +13,6 @@ import AddBook from './components/AddBook'
 import About from './components/About'
 import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 
-
-
 const store = createStore(
   rootReducer,
   compose(

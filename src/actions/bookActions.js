@@ -11,7 +11,7 @@ const receivedBooksData = booksData => {
 }
 
 const receivedGBooksInfo = booksFound => {
-  debugger
+  
   return {
     type: 'RECEIVED_GBOOKS_DATA',
     booksFound
@@ -60,27 +60,20 @@ export function addBook(book) {
 }
 
 
-export function findBook() {
+export function findBook(book) {
+  debugger
   return function(dispatch){        
-    return fetch('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes')
+    return fetch(`https://www.googleapis.com/books/v1/volumes?q=+intitle:${book}&key=AIzaSyDUIRRejGqO1hTzX6F7eykfoKO1_InM0Hg`)
     .then(console.log('findbookplace'))
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
       .then(booksFound => {
         console.log('booksFOUNDITEMS', booksFound.items)
         dispatch(receivedGBooksInfo(booksFound.items))
-        dispatch(stopFetchingData())
+        browserHistory.push('/gbooks')          
+        //dispatch(stopFetchingData())
     })
    
   }
 }
 
-
-
- // fetch('http://localhost:3200/api/v1/books')          
- //            .then(console.log(response => response.json()))
- //            .then(response => response.json())
- //            .then(data => this.setState({             
- //                books: data,
- //                currentBook: data[0]
- //            }))

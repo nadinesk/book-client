@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/bookActions.js'
-import BookDetail from './BookDetail'
+import GBooksList from './GBooksList'
 import { Button, ButtonToolbar, Grid, Row, Col, Clearfix } from 'react-bootstrap'
 
 export default class GBooks extends Component {
@@ -21,24 +21,20 @@ export default class GBooks extends Component {
     }
 
         componentDidMount() {      
-       		debugger
-       		this.props.actions.findBook()
-       		this.props.actions.fetchBooks()
+       		
+       		//this.props.actions.findBook()
+       		
     	}
 
     
 	
  	 render() {
 
- 	 	const books_map = this.props.books.map((book) => (
-                
-        	<p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
-            	{book.title}     
-			</p>
-        ))    
+ 	
   
       return (
        <div>
+        {this.props.booksFound.length > 0 ? <GBooksList booksFound={this.props.booksFound}/> : <h4>...do another search</h4>}   
        </div>
       )
     }
@@ -52,7 +48,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-  debugger
+  
   return { booksFound: state.booksFound}
 }
 

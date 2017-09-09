@@ -32,7 +32,7 @@ export default class AddBook extends Component {
       event.preventDefault()            
       let book = Object.assign({}, this.state)
       this.props.actions.addBook(book)
-  }
+   }
 
 
     validateField(fieldName, value) {

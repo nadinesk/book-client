@@ -27,44 +27,15 @@ export default class FindBook extends Component {
             [name]: value,
         })
 
-        // this.setState({
-        //     [name]: value,
-        // }, () => { this.validateField(name, value) });
-
 
     }
 
     handleOnSubmit(event){
       event.preventDefault()            
       let book = Object.assign({}, this.state)
-      this.props.actions.findBook(book)
+      debugger
+      this.props.actions.findBook(book.gtitle)
     }
-
-
-  //   validateField(fieldName, value) {
-  //     let fieldValidationErrors = this.state.formErrors;
-  //     let titleValid = this.state.titleValid;
-    
-  //     switch(fieldName) {
-  //       case 'title':
-  //         titleValid = value.length > 0; 
-  //         fieldValidationErrors.title = titleValid ? '' : ' must include a book title';
-  //         break;      
-  //       default:
-  //         break;
-  //   }
-  //     this.setState({formErrors: fieldValidationErrors,
-  //       titleValid: titleValid,        
-  //     }, this.validateForm);
-  // }
-
-  //   validateForm() {
-  //     this.setState({formValid: this.state.titleValid});
-  //   }
-
-    // errorClass(error) {
-    //   return(error.length === 0 ? '' : 'has-error');
-    // }
 
     render() {
         return (
@@ -81,9 +52,8 @@ export default class FindBook extends Component {
                       type="text"
                       name="gtitle"
                       onChange={(event) => this.handleInputChange(event)}              
-                      placeholder="Title"/>
-                    
-           
+                      placeholder="Title"
+                    />
 
                   <button type="submit" >Submit </button>
                 </form>      
