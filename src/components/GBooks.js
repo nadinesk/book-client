@@ -6,6 +6,9 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/bookActions.js'
 import GBooksList from './GBooksList'
 import { Button, ButtonToolbar, Grid, Row, Col, Clearfix } from 'react-bootstrap'
+import store from '../store'
+
+
 
 export default class GBooks extends Component {
 
@@ -22,19 +25,35 @@ export default class GBooks extends Component {
 
         componentDidMount() {      
        		
-       		//this.props.actions.findBook()
+         
+
        		
     	}
+
+      testThis() {
+          
+
+          if (this.props.booksFound.length > 0) {
+            return <GBooksList booksFound={this.props.booksFound}/> 
+          }
+           else {
+              return <h4>Do a new <a href="/books/find">search</a></h4>
+         }
+          
+          
+      }
 
     
 	
  	 render() {
 
- 	
+ 	  
   
       return (
        <div>
-        {this.props.booksFound.length > 0 ? <GBooksList booksFound={this.props.booksFound}/> : <h4>...do another search</h4>}   
+
+        {this.testThis()}   
+        
        </div>
       )
     }

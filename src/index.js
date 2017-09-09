@@ -12,14 +12,16 @@ import Home from './components/Home'
 import AddBook from './components/AddBook'
 import About from './components/About'
 import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
+import store from './store'
 
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
-)
+
+// const store = createStore(
+//   rootReducer,
+//   compose(
+//     applyMiddleware(thunk),
+//     window.devToolsExtension ? window.devToolsExtension() : f => f
+//   )
+// )
 
 ReactDOM.render(
   

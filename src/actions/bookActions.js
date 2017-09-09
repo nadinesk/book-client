@@ -63,7 +63,7 @@ export function addBook(book) {
 export function findBook(book) {
   debugger
   return function(dispatch){        
-    return fetch(`https://www.googleapis.com/books/v1/volumes?q=+intitle:${book}&key=AIzaSyDUIRRejGqO1hTzX6F7eykfoKO1_InM0Hg`)
+    return fetch(`https://www.googleapis.com/books/v1/volumes?q=+intitle:${book}`)
     .then(console.log('findbookplace'))
       .then(console.log(response => response.json()))
       .then(res =>  res.json())

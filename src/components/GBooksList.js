@@ -37,7 +37,7 @@ export default class GBooksList extends Component {
 	   console.log('this.props.booksFound', this.props.booksFound)
 		const g_books_map = this.props.booksFound.map((book) => (
                 
-        	<p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
+        	<p key={book.id} className="book-link" onClick={() => this.setGBook(book.id)}>
             	{book.volumeInfo.title}     
 			</p>
         ))    
