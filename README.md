@@ -1,7 +1,7 @@
 
 # Overview
 
-This is the backend for The BookCrowd app. The front-end code is [here](https://github.com/nadinesk/book-client-user). 
+This is the front-end for The BookCrowd app. The front-end code is [here](https://github.com/nadinesk/book-api). 
 
 The BookCrowd crowdsources books that other users have enjoyed, to give others ideas for new books to read.
 
