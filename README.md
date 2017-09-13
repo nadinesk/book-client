@@ -9,7 +9,7 @@ Users can list books they want to share as ideas for others to read, and they ca
 
 This app can be accessed here: 
 
-http://glacial-atoll-99448.herokuapp.com/about
+http://glacial-atoll-99448.herokuapp.com/
 
 ## Contributing
 
