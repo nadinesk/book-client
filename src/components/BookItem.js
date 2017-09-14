@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/bookActions.js'
 import { browserHistory } from 'react-router';
+import Books from './Books';
 
 
 
@@ -13,7 +14,14 @@ export default class BookItem extends Component {
 
         super(props)
 
+       this.setState({
+
+       })
        
+    }
+
+    componentDidMount() {
+      
     }
 
 
@@ -34,18 +42,8 @@ export default class BookItem extends Component {
       })
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
-      .then(fetch('http://dry-peak-34989.herokuapp.com/api/v1/books')
-          .then(console.log(response => response.json()))
-          .then(res =>  res.json())
-          .then(booksData => {
-            console.log('booksData', booksData)
-            this.setState({
-              books: booksData
-            })
-             browserHistory.push('/books')     
-            
-        })
-        )
+     
+        
       
 
    }
@@ -65,6 +63,7 @@ export default class BookItem extends Component {
 }
 
 function mapDispatchToProps(dispatch){
+  debugger
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
