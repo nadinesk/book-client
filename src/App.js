@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navigation/Navbar';
 import Books from './components/Books'
+import BookItem from './components/BookItem'
 import Home from './components/Home'
 import AddBook from './components/AddBook'
 import {connect} from 'react-redux'

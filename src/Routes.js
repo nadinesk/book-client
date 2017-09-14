@@ -10,6 +10,7 @@ import { ConnectedBooksInput } from './components/AddBook'
 import { ConnectedFindBooks } from './components/AddGBooks'
 import { ConnectedBooks } from './components/Books'
 
+
 import {Navbar, Nav, NavItem, Navs} from 'react-bootstrap'
 
 // import SurfboardDetail from './components/SurfboardDetail'
@@ -23,5 +24,6 @@ export default (
             <Route path="/books/search"  component={ConnectedFindBooks} />            
 			<Route path="/about" component={About} />		
 			<Route path="/gbooks" component={ConnectedGBooks} />	
+			<Route path="/connected_books" component={ConnectedGBooks} />	
     </Route>
 )

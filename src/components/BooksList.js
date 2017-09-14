@@ -39,10 +39,11 @@ export default class BooksList extends Component {
 	
 		const books_map = this.props.books.map((book) => (
             <div>
-            	<p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
-                	{book.title}     
-                    <BookItem book={this.state.book} /> 
-    			</p>
+            	    <p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
+                    {book.title}  
+                    <BookItem book={book} /> 
+                    </p>
+    			
                 
             </div> 
         ))    

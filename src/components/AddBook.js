@@ -93,6 +93,7 @@ export default class AddBook extends Component {
                     name="notes"
                     onChange={(event) => this.handleInputChange(event)}              
                     placeholder="Notes"/>
+                 
 
                   <button type="submit" disabled={!this.state.formValid}>Submit </button>
                 </form>      

@@ -40,7 +40,7 @@ export function addBook(book) {
   console.log('addbook')
   return function(dispatch) {    
     dispatch({type: 'POST_BOOK'})
-    return fetch('https://dry-peak-34989.herokuapp.com/api/v1/books', {
+    return fetch('http://dry-peak-34989.herokuapp.com/api/v1/books', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -76,5 +76,32 @@ export function findBook(book) {
    
   }
 }
+
+
+export function increment(likes, book_id) {    
+  debugger
+  console.log('incrementlikes')
+  return function(dispatch) {    
+    dispatch({type: 'POST_LIKES'})
+    return fetch(`http://dry-peak-34989.herokuapp.com/api/v1/books/${book_id}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ likes: likes})      
+    })
+      .then(res => res.json())
+      .then(responseJson => {          
+          console.log(responseJson)
+          browserHistory.push('/books')          
+      })
+
+
+
+  }
+}
+
+
 
 
