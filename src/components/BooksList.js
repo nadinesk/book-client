@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import BookDetail from './BookDetail'
+import BookItem from './BookItem'
 import { Button, ButtonToolbar, Grid, Row, Col, Clearfix } from 'react-bootstrap'
 
 export default class BooksList extends Component {
@@ -12,7 +13,6 @@ export default class BooksList extends Component {
 
         this.state = {
           currentBook: ''
-
         }
     }
 
@@ -33,13 +33,18 @@ export default class BooksList extends Component {
         })
     }
 
+
+
  	render() {
 	
 		const books_map = this.props.books.map((book) => (
+            <div>
+            	<p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
+                	{book.title}     
+                    <BookItem book={this.state.book} /> 
+    			</p>
                 
-        	<p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
-            	{book.title}     
-			</p>
+            </div> 
         ))    
   
   	return (
