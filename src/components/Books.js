@@ -21,6 +21,7 @@ export default class Books extends Component {
     }
 
     componentDidMount() {      
+       
        this.props.actions.fetchBooks()
     }
 
@@ -34,7 +35,7 @@ export default class Books extends Component {
             <Col className="first_col1" md={6} >                               
               <Link to="/books/new">Add A Book  </Link>                    
             
-              {this.props.books.length > 0 ? <BooksList books={this.props.books} acts={this.props.actions.fetchBooks()}/> : <h4>...loading</h4>}                    
+              {this.props.books.length > 0 ? <BooksList books={this.state.books} /> : <h4>...loading</h4>}                    
             </Col>                                           
           </Row>
         </Grid>

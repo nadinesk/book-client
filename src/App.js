@@ -28,8 +28,7 @@ export class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  console.log('app  map state to props')
+function mapStateToProps(state) {  
   return {books: state.books}
 }
 

@@ -1,8 +1,6 @@
-export default function gbooksReducer(state = {}, action) {
-  console.log('GBOOKSREDUCER')
+export default function gbooksReducer(state = {}, action) {  
   switch(action.type) {
-    case 'RECEIVED_GBOOKS_DATA': 
-    	console.log('GBOOKS action', action.booksFound)
+    case 'RECEIVED_GBOOKS_DATA':     	
     	return action.booksFound;
     default: 
       return state;

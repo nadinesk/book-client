@@ -3,7 +3,7 @@ import { stopFetchingData } from './fetchingDataActions';
 import { browserHistory } from 'react-router';
 
 const receivedBooksData = booksData => {
-  console.log(booksData)
+  
   return {
     type: 'RECEIVED_BOOKS_DATA',
     booksData
@@ -22,11 +22,9 @@ export function fetchBooks() {
 
   return function(dispatch){    
     //dispatch({type: 'FETCH_BOOKS'})
-    return fetch('https://dry-peak-34989.herokuapp.com/api/v1/books')
-      .then(console.log(response => response.json()))
+    return fetch('https://dry-peak-34989.herokuapp.com/api/v1/books')      
       .then(res =>  res.json())
-      .then(booksData => {
-        console.log(booksData)
+      .then(booksData => {        
         dispatch(receivedBooksData(booksData))
         dispatch(stopFetchingData())
     })
@@ -36,8 +34,7 @@ export function fetchBooks() {
 
 
 
-export function addBook(book) {    
-  console.log('addbook')
+export function addBook(book) {      
   return function(dispatch) {    
     dispatch({type: 'POST_BOOK'})
     return fetch('http://dry-peak-34989.herokuapp.com/api/v1/books', {
@@ -64,11 +61,8 @@ export function findBook(book) {
   debugger
   return function(dispatch){        
     return fetch(`https://www.googleapis.com/books/v1/volumes?q=+intitle:${book}`)
-    .then(console.log('findbookplace'))
-      .then(console.log(response => response.json()))
       .then(res =>  res.json())
       .then(booksFound => {
-        console.log('booksFOUNDITEMS', booksFound.items)
         dispatch(receivedGBooksInfo(booksFound.items))
         browserHistory.push('/gbooks')          
         //dispatch(stopFetchingData())
@@ -76,32 +70,5 @@ export function findBook(book) {
    
   }
 }
-
-
-export function increment(likes, book_id) {    
-  debugger
-  console.log('incrementlikes')
-  return function(dispatch) {    
-    dispatch({type: 'POST_LIKES'})
-    return fetch(`http://dry-peak-34989.herokuapp.com/api/v1/books/${book_id}`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ likes: likes})      
-    })
-      .then(res => res.json())
-      .then(responseJson => {          
-          console.log(responseJson)
-          browserHistory.push('/books')          
-      })
-
-
-
-  }
-}
-
-
 
 

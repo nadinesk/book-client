@@ -42,10 +42,7 @@ export default class BookItem extends Component {
       })
       .then(console.log(response => response.json()))
       .then(res =>  res.json())
-     
-        
-      
-
+  
    }
 
 
