@@ -41,7 +41,7 @@ export default class BooksList extends Component {
             <div>
             	    <p key={book.id} className="book-link" onClick={() => this.setBook(book.id)}>
                     {book.title}  
-                    <BookItem book={book} /> 
+                    <BookItem book={book} books={this.props.books} /> 
                     </p>
     			
                 

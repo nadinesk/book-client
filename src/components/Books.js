@@ -15,9 +15,7 @@ export default class Books extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-          books: []
-        }
+        
     }
 
     componentDidMount() {      
@@ -35,7 +33,7 @@ export default class Books extends Component {
             <Col className="first_col1" md={6} >                               
               <Link to="/books/new">Add A Book  </Link>                    
             
-              {this.props.books.length > 0 ? <BooksList books={this.state.books} /> : <h4>...loading</h4>}                    
+                {this.props.books.length > 0 ? <BooksList books={this.props.books} /> : <h4>...loading</h4>}               
             </Col>                                           
           </Row>
         </Grid>

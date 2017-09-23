@@ -28,11 +28,7 @@ export class App extends Component {
   }
 }
 
-function mapStateToProps(state) {  
-  return {books: state.books}
-}
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
-}
-export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)
+
+
+export default App
