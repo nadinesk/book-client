@@ -16,7 +16,7 @@ class BookItem extends Component {
       let book_id  = this.props.book.id      
       let likesplus = this.props.book.likes + 1
       let books = this.props.books
-      this.props.updateBook(book_id, likesplus, books)
+      this.props.updateBook(book_id, likesplus)
   
    }
 

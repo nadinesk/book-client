@@ -57,7 +57,7 @@ export function addBook(book) {
   }
 }
 
-export function updateBook(id, likesplus, booksData) {
+export function updateBook(id, likesplus) {
   return function(dispatch) {
     return fetch(`https://dry-peak-34989.herokuapp.com/api/v1/books/${id}`, {
         method: 'PATCH', 
@@ -69,7 +69,7 @@ export function updateBook(id, likesplus, booksData) {
 
       })
       .then(res => res.json())
-      .then(book =>  dispatch({type: 'UPDATE_BOOK_SUCCESS', payload: {book: book, books: booksData}}))
+      .then(book =>  dispatch({type: 'UPDATE_BOOK_SUCCESS', payload: {book: book}}))
    }
 
 
